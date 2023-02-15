@@ -8,25 +8,29 @@ function SignUp() {
     <div className="signUp">
         <label>Sign Up</label>
 
-        <input placeholder='First Name' 
+        <input 
+        placeholder='First Name' 
         onChange={(event) => {
             setUser({...user, firstName: event.target.value })
-        }}></input>
+        }}/>
 
-        <input placeholder='Last Name' 
+        <input 
+        placeholder='Last Name' 
         onChange={(event) => {
             setUser({...user, lastName: event.target.value })
-        }}></input>
+        }}/>
 
-        <input placeholder='Username' 
+        <input 
+        placeholder='Username' 
         onChange={(event) => {
             setUser({...user, username: event.target.value })
-        }}></input>
+        }}/>
 
-        <input placeholder='Password' 
+        <input 
+        placeholder='Password' 
         onChange={(event) => {
             setUser({...user, password: event.target.value })
-        }}></input>
+        }}/>
             <button onClick={signUp}> Sign Up </button>
     </div>
   )
