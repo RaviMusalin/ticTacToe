@@ -6,12 +6,14 @@ import Cookies from "universal-cookie"
 
 function App() {
     const api_key = "at8wbar958ur"
+    const cookies = new Cookies()
     const token = cookies.get("token")
-    const cookies = new Cookies
     const client = StreamChat.getInstance(api_key)
 
     if (token) {
-        client.connectUser({
+        client
+            .connectUser(
+            {
             id: cookies.get("userId"),
             name: cookies.get("username"),
             firstName: cookies.get("firstName"),
@@ -19,9 +21,11 @@ function App() {
             hashedPassword: cookies.get("hashedPassword"),
         },
         token
-        ).then((user) => {
+        )
+        .then((user) => {
             console.log(user)
-        })
+        }
+        )
     }
     return (
         <div className="App">
