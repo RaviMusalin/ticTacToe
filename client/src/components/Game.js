@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import Board from './Board'
+import {Window, MessageList, MessageInput} from 'stream-chat-react'
+import './Chat.css'
 
-function Game({channel}) {
+function Game({channel, setChannel}) {
     const [playersJoined, setPlayersJoined] = useState(
         channel.state.watcher_count === 2
         )
@@ -16,7 +18,20 @@ function Game({channel}) {
   return (
     <div className="gameContainer">
         <Board result={result} setResult={setResult}/>
-        
+        <Window>
+            <MessageList 
+            disableDateSeparator
+            closeReactionSelectorOnClick
+            hideDeletedMessages
+            messageActions={["react"]}/>
+            <MessageInput noFiles/>
+        </Window>
+        <button onClick={async () => {
+            await channel.stopWatching()
+            setChannel(null)
+        }}>Leave Game</button>
+        {result.state === "won" && <div> {result.winner} WON THE GAME </div>}
+        {result.state === "tie" && <div> GAME TIED </div>}
     </div>
   )
 }
