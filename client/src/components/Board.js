@@ -9,7 +9,7 @@ function Board({result, setResult}) {
     const [turn, setTurn] = useState("X")
 
     const { channel } = useChannelStateContext()
-    const {client} = useChatContext()
+    const { client } = useChatContext()
 
     useEffect(() => {
         checkIfTie()
